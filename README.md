@@ -2,7 +2,8 @@
 
 Um aplicativo simples de lista de tarefas (To-Do List) feito com **HTML, JavaScript e CSS**. Ele permite adicionar, marcar como concluído e remover tarefas de forma dinâmica.
 
-
+## 🌍 Acesse o Projeto
+🔗 [Clique aqui para acessar](https://rodrigo-falcao.github.io/ToDoList/)
 
 ## 📌 Funcionalidades
 
