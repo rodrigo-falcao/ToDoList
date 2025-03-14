@@ -19,20 +19,24 @@ const removeTask = (taskId) => {
 
 const removeDoneTasks = () => {
     const tasks = getTaskFromLocalStorage();
-    const tasksToRemove = tasks
-        .filter (({ checked}) => checked )
-        .map(({id}) => id)
+
+    const tasksToRemove = tasks.
+        filter(({ checked }) => checked)
+        .map(({ id }) => id);
     
     const updatedtasks = tasks.filter(({ checked }) => !checked);
     getTaskFromLocalStorage(updatedtasks);
 
-    tasksToRemove.forEach((tasksToRemove) => {
-        document
-        .getElementById('todo-list')
-        .removeChild(document.getElementById(tasksToRemove))
-    }
-)}
+    tasksToRemove.forEach((taskId) => {
+        const taskElement = document.getElementById(taskId);
+        if (taskElement) {
+            document.getElementById('todo-list').removeChild(taskElement);
+        }
+    });
+}
 
+
+// correção
 const createTaskListItem = (task, checkbox) => {
     const list = document.getElementById('todo-list');
     const toDo = document.createElement('li');
@@ -56,14 +60,14 @@ const onCheckboxClick = (event) => {
 
     const updatedTasks = tasks.map((task) => {
         if(parseInt(id) === parseInt(task.id)) {
-            return { ...task, checked: event.target.checked}
+            return { ...task, checked: event.target.checked };
         }else {
             return task;
         }
         
     })
 
-    getTaskFromLocalStorage(updatedTasks);
+    setTasksInLocalStorage(updatedTasks);
 }
 
 const getCheckboxInput = ({id, description, checked}) => {
@@ -99,9 +103,16 @@ const getNewTaskData = (event) => {
     return {description, id}
 }
 
-const createTask = (event) => {
+const getCreateTaskInfo = (event) => new Promise ((resolve) => {
+    setTimeout(() => {
+        resolve(getNewTaskData(event))
+    },1000)
+})
+
+const createTask = async (event) => {
     event.preventDefault();
-    const NewTaskData = getNewTaskData(event);
+    document.getElementById('save-task').setAttribute('disabled', true)
+    const NewTaskData = await getCreateTaskInfo(event);
 
     if(!NewTaskData.description.trim()) {
         alert('A descrição da tarefa não pode ser vazia!')
@@ -120,6 +131,7 @@ const createTask = (event) => {
     setTasksInLocalStorage(updatedTasks)
 
     document.getElementById('description').value = ''
+    document.getElementById('save-task').removeAttribute('disabled')
 }
 
 window.onload = function() {
