@@ -35,8 +35,6 @@ const removeDoneTasks = () => {
     });
 }
 
-
-// correção
 const createTaskListItem = (task, checkbox) => {
     const list = document.getElementById('todo-list');
     const toDo = document.createElement('li');
