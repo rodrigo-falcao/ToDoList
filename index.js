@@ -15,6 +15,8 @@ const removeTask = (taskId) => {
     document
         .getElementById('todo-list')
         .removeChild(document.getElementById(taskId));
+
+    updateTaskCounter(); 
 }
 
 const removeDoneTasks = () => {
@@ -25,7 +27,7 @@ const removeDoneTasks = () => {
         .map(({ id }) => id);
     
     const updatedtasks = tasks.filter(({ checked }) => !checked);
-    getTaskFromLocalStorage(updatedtasks);
+    setTasksInLocalStorage(updatedtasks);
 
     tasksToRemove.forEach((taskId) => {
         const taskElement = document.getElementById(taskId);
@@ -33,7 +35,28 @@ const removeDoneTasks = () => {
             document.getElementById('todo-list').removeChild(taskElement);
         }
     });
+
+    updateTaskCounter();
 }
+
+const updateTaskCounter = () => {
+    const tasks = getTaskFromLocalStorage();
+
+    let doneTasks = tasks.filter(({ checked }) => checked).length;
+    let totalTasks = tasks.length;
+
+    document.getElementById("counterDone").textContent = doneTasks;
+    document.getElementById("counterTotalTasks").textContent = totalTasks;
+};
+
+const counterTaskDone = () => {
+    let counterTasks = tasks.filter(({ checked }) => !checked);
+    let counterTotalTasks = tasks.length;
+
+    return counterTotalTasks, counterTasks
+}
+
+
 
 const createTaskListItem = (task, checkbox) => {
     const list = document.getElementById('todo-list');
@@ -66,6 +89,7 @@ const onCheckboxClick = (event) => {
     })
 
     setTasksInLocalStorage(updatedTasks);
+    updateTaskCounter();
 }
 
 const getCheckboxInput = ({id, description, checked}) => {
@@ -128,11 +152,17 @@ const createTask = async (event) => {
     ]
     setTasksInLocalStorage(updatedTasks)
 
-    document.getElementById('description').value = ''
-    document.getElementById('save-task').removeAttribute('disabled')
+    document.getElementById('description').value = '';
+    document.getElementById('save-task').removeAttribute('disabled');
+
+    updateTaskCounter();
 }
 
+
+
 window.onload = function() {
+    updateTaskCounter();
+
     const form = document.getElementById('create-todo-form');
     form.addEventListener('submit', createTask)
 
