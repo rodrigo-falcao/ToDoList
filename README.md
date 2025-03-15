@@ -31,5 +31,5 @@ Um aplicativo simples de lista de tarefas (To-Do List) feito com **HTML, JavaScr
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e28a7fb8-d36c-4c71-b69e-8d1d9145af52" alt="Screenshot do projeto">
+  <img src="https://github.com/user-attachments/assets/87466e73-e865-4a04-805b-170728d39551" alt="Screenshot do projeto">
 </p>
