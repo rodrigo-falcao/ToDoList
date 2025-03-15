@@ -152,7 +152,9 @@ footer {
     display: flex;
     align-items: center;
     gap: 5px;
-
+}
+#textTasksDone {
+    font-size: 15px;
 }
 .task-counter span {
     padding: 4px 8px;

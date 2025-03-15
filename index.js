@@ -161,8 +161,6 @@ const createTask = async (event) => {
 
 
 window.onload = function() {
-    updateTaskCounter();
-
     const form = document.getElementById('create-todo-form');
     form.addEventListener('submit', createTask)
 
@@ -172,4 +170,6 @@ window.onload = function() {
         const checkbox = getCheckboxInput(task);
         createTaskListItem(task, checkbox);
     });
+
+    updateTaskCounter();
 };
