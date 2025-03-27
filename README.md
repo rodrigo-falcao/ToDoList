@@ -13,20 +13,12 @@ Um aplicativo simples de lista de tarefas (To-Do List) feito com **HTML, JavaScr
 ✔ Remover todas as tarefas concluídas  
 ✔ Estado atualizado em tempo real  
 
-
-
 ## 🚀 Tecnologias Utilizadas
 
 - **HTML5** → Estrutura da aplicação  
 - **CSS3** → Estilização da interface  
 - **JavaScript (ES6+)** → Lógica e manipulação do DOM  
 - **Git/GitHub** → Controle de versão  
-
-## 🛠️ Como executar o projeto?
-
-1. **Clone este repositório**  
-   ```bash
-   git clone https://github.com/rodrigo-falcao/ToDoList.git
 
 ## 📸 Screenshots
 
